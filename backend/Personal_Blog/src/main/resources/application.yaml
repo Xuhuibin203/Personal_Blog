@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: Personal_Blog
+
+  # MySQL 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/personal_blog?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=utf-8
+    username: root
+    password: X87106y!@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA 配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  # Jackson 时区
+  jackson:
+    time-zone: Asia/Shanghai
+
+# 服务器端口
+server:
+  port: 8080
+
+# JWT 配置
+jwt:
+  secret: your-secret-key-must-be-at-least-256-bits-long-for-hs256-algorithm-please-change-this
+  expiration: 86400000
+
+# 文件上传路径
+upload:
+  path: ./uploads

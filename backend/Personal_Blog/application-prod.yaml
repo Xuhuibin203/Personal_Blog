@@ -1,0 +1,28 @@
+# ============================================
+# 生产环境配置
+# 启动方式: java -jar xxx.jar --spring.profiles.active=prod
+# 放在 JAR 同目录下，Spring Boot 自动加载
+# ============================================
+
+spring:
+  # MySQL 数据库配置（服务器上的）
+  datasource:
+    url: jdbc:mysql://localhost:3306/personal_blog?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&characterEncoding=utf-8
+    username: personal_blog
+    password: 'X87106y!@'
+
+  jpa:
+    show-sql: false  # 生产环境关闭SQL日志
+
+# JWT 密钥
+jwt:
+  secret: k8X2mP9qL5vN7wR3tY6uA1bC4dE8fG0hJ2lM5oP7sT9vW1xZ3y
+  expiration: 86400000
+
+# 文件上传路径（服务器上的绝对路径）
+upload:
+  path: /www/wwwroot/uploads
+
+# 服务器端口
+server:
+  port: 8082

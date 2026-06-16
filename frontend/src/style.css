@@ -1,0 +1,145 @@
+:root {
+  /* 暖色大地色系 */
+  --bg: #FAF7F2;
+  --bg-alt: #F0EAE0;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255, 255, 255, 0.78);
+
+  --accent: #D4784C;
+  --accent-hover: #B85C32;
+  --accent-light: #FDF0E8;
+  --accent-glow: rgba(212, 120, 76, 0.15);
+  --accent-subtle: #FBF3EC;
+
+  --text: #3D2C20;
+  --text-secondary: #8B7355;
+  --text-muted: #A89880;
+  --text-on-dark: #FAF7F2;
+
+  --border: rgba(139, 115, 85, 0.12);
+  --border-light: rgba(139, 115, 85, 0.07);
+
+  --card-bg: #FFFFFF;
+  --shadow-sm: 0 1px 2px 0 rgba(61, 44, 32, 0.04);
+  --shadow: 0 2px 16px 0 rgba(61, 44, 32, 0.05), 0 1px 3px 0 rgba(61, 44, 32, 0.04);
+  --shadow-lg: 0 8px 40px 0 rgba(61, 44, 32, 0.07), 0 2px 8px 0 rgba(61, 44, 32, 0.04);
+  --shadow-xl: 0 20px 60px 0 rgba(61, 44, 32, 0.10);
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  --sans: 'Inter', 'SF Pro Display', 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+  --serif: 'Noto Serif SC', 'Playfair Display', 'Songti SC', 'SimSun', serif;
+  --mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'JetBrains Mono', monospace;
+
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 杂志风标题默认使用衬线体 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--serif);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C8B8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8A890;
+}
+
+/* Element Plus 主题覆盖 */
+.el-button--primary {
+  --el-button-bg-color: var(--accent);
+  --el-button-border-color: var(--accent);
+  --el-button-hover-bg-color: var(--accent-hover);
+  --el-button-hover-border-color: var(--accent-hover);
+  --el-button-text-color: #fff;
+}
+
+/* 杂志首字下沉 */
+.drop-cap::first-letter {
+  font-family: var(--serif);
+  font-size: 3.5em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-top: 4px;
+  color: var(--accent);
+}
+
+/* 装饰分隔线 */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* 引用块杂志风格 */
+blockquote.magazine {
+  border-left: 4px solid var(--accent);
+  padding: 16px 24px;
+  margin: 24px 0;
+  background: var(--accent-light);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 1.1em;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+}
