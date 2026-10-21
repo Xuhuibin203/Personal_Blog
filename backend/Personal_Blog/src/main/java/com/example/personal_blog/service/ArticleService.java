@@ -6,6 +6,7 @@ import com.example.personal_blog.model.entity.Article;
 import com.example.personal_blog.model.entity.User;
 import com.example.personal_blog.model.enums.ArticleType;
 import com.example.personal_blog.repository.ArticleRepository;
+import com.example.personal_blog.repository.CommentRepository;
 import com.example.personal_blog.repository.LikeRecordRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,10 +22,14 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
     private final LikeRecordRepository likeRecordRepository;
+    private final CommentRepository commentRepository;
 
-    public ArticleService(ArticleRepository articleRepository, LikeRecordRepository likeRecordRepository) {
+    public ArticleService(ArticleRepository articleRepository,
+                          LikeRecordRepository likeRecordRepository,
+                          CommentRepository commentRepository) {
         this.articleRepository = articleRepository;
         this.likeRecordRepository = likeRecordRepository;
+        this.commentRepository = commentRepository;
     }
 
     public ApiResponse<?> getArticles(int page, int size, String type, User currentUser) {
@@ -91,6 +96,9 @@ public class ArticleService {
         if (!articleRepository.existsById(id)) {
             return ApiResponse.error(404, "文章不存在");
         }
+        // 先清理关联数据，否则外键约束会阻止删除文章
+        commentRepository.deleteByArticleId(id);
+        likeRecordRepository.deleteByArticleId(id);
         articleRepository.deleteById(id);
         return ApiResponse.success("删除成功", null);
     }

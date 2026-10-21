@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  User, MapPin, Phone, Mail, Calendar, Briefcase, Award,
+  User, MapPin, Phone, Mail, Briefcase, Award,
   GraduationCap, Code2, Star, ExternalLink, ChevronRight,
-  Target, FolderGit2, Building2, Clock, Heart
+  Target, FolderGit2, Building2
 } from 'lucide-vue-next'
 </script>
 

@@ -63,10 +63,20 @@ router.beforeEach(async (to, _from, next) => {
     return
   }
 
-  // admin 路由需要管理员权限
-  if (to.meta.requiresAdmin && !authStore.isAdmin) {
-    next('/')
-    return
+  // admin 路由需要管理员权限：先确保用户信息已加载
+  if (to.meta.requiresAdmin) {
+    if (!authStore.user) {
+      await authStore.fetchUser()
+    }
+    // fetchUser 失败会清空 token，此时 isLoggedIn 为 false
+    if (!authStore.isLoggedIn) {
+      next({ path: '/admin/login', query: { redirect: to.fullPath } })
+      return
+    }
+    if (!authStore.isAdmin) {
+      next('/')
+      return
+    }
   }
 
   next()

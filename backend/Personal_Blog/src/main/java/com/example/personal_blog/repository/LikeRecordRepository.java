@@ -9,4 +9,5 @@ public interface LikeRecordRepository extends JpaRepository<LikeRecord, Long> {
     boolean existsByArticleIdAndUserId(Long articleId, Long userId);
     int countByArticleId(Long articleId);
     void deleteByArticleIdAndUserId(Long articleId, Long userId);
+    void deleteByArticleId(Long articleId);
 }

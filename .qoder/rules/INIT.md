@@ -5,3 +5,4 @@ trigger: always_on
 Vue项目允许你用Pinia、element。
 项目中的图标你要从https://lucide.nodejs.cn/icons/这个网址里面去挑选，这里面的样式风格都是统一的。
 对于后端项目，可以使用Docker
+后端服务位于8082端口

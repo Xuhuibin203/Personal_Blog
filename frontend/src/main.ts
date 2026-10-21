@@ -12,9 +12,11 @@ app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
 
-// 启动时尝试获取用户信息
+// 启动时尝试获取用户信息（非阻塞）
 import { useAuthStore } from './stores/auth'
 const authStore = useAuthStore()
-await authStore.fetchUser()
+authStore.fetchUser().catch(() => {
+  // 静默失败，不影响应用启动
+})
 
 app.mount('#app')
